@@ -1,0 +1,15 @@
+This project I'll be sticking with ES6. The three most important ES6 features I'll be using in this tutorial are:
+Links for more info on each there provided below.
+-Desctructuring: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+-easier way to create the variable set and get for Ember.set/Ember.get. Instead of having to write out Ember.get or Ember.set over and over again I can use the shorthand set or get instead.
+
+
+-Arrow Functions: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+
+-shorter syntax and it lexically binds the this value.
+
+-New method definitions
+
+-Dont have to write function word just ()
+
+ :https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions

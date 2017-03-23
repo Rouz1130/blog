@@ -1,8 +1,9 @@
 <h4>Comments:</h4>
-
+<!--unless helper with if sessions helper allows to check if user is allowed to make comments if logged in. -->
 {{#unless post.comments}}
     <h4> No Comments</h4>
 {{/unless}}
+<!--comment model is passed into this component  -->
     {{#each post.comments as |comment|}}
 <div class='comments'>
     <img src='{{comment.user.avatar}}'/>
@@ -10,10 +11,13 @@
     -<a href='http://twitter.com/{{comment.user.username}}' target='_blank'>{{comment.user.username}}</a><br>
 </div>
     {{/each}}
-
+<!--session is passed intio this Component-->
+<!--if user is authenticated they can leave a comment-->
 {{#if session.isAuthenticated}}
 <div class='box'>
     <img src='{{session.currentUser.profileImageURL}}' height='70px' width='70px'/>
+    <!--one way binding on {{body}} property. Meaning body property is copied to the template and any changes wont affect parent property.  -->
+    <!--to update the body propety in the template is to attach the onChange {{action(mut body)}} any change the taget.value iscopied to the body property. the (mut) helper makes body property mutable.  -->
     <textarea rows='2' placeholder='Add New Comment' value= {{body}} onchange={{action (mut body) value='target.value'}} />
     <button {{action 'submitComment' session body}}>Submit</button>
 </div>

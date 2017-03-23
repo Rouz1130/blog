@@ -5,7 +5,6 @@ import getOrCreateUser from '../get-or-create-user/util';
 const {get, set } = Ember;
 
 export default Ember.Route.extend({
-  // create a new post and then add it as an object to the user. The post gets saved first then the user
   actions: {
     save(title,body){
       let user = null;
@@ -21,7 +20,7 @@ export default Ember.Route.extend({
       });
 
       user = getOrCreateUser(uid,get(this,'session.currentUser.username'),
-      get(this,'session.currentUser.profileImageURL'),
+      get(this,'session.currentUser.photoURL'),
       this.store);
       user.then((userData)=>{
         userData.get('posts').addObject(post);

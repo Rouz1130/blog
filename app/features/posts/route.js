@@ -1,52 +1,48 @@
 import Ember from 'ember';
 import cleanURI from '../clean/util';
-import cleanURI from '../clean/util';
-
+import getOrCreateUser from '../get-or-create-user/util';
 const {get} = Ember;
 
 export default Ember.Route.extend({
   model(param) {
-    return this.store.query('post', {orderBy: 'titleURL', equalTo: param:titleURL});
+    return this.store.query('post', {orderBy: 'titleURL',equalTo: param.titleURL });
   },
-  actions: {
-    delete(post) {
+  actions:{
+    delete(post){
       post.deleteRecord();
       post.save();
       this.transitionTo('index');
     },
-    save(post) {
+    save(post){
       let titleURL = cleanURI(post.get('title'));
-      post.save('titleURL', titleURL);
+      post.set('titleURL',titleURL);
       post.save();
       this.transitionTo('index');
     },
-    createComment(author, body, post){
+    createComment(author, body,post){
       let user = null;
       let comment = this.store.createRecord('comment', {
-        body:body
+        body: body
       });
-      // getOrCreateUser utility we worked on earlier. It receives back an existing user model or a new one. This depends if the uid is already in the database or not. It also creates a new record for the comment.
       let uid = author.get('uid');
       user = getOrCreateUser(uid,
         get(this,'session.currentUser.username'),
-        get(this.'session.currentUser.profileImageURL'),
+        get(this,'session.currentUser.photoURL'),
         this.store);
 
-
-        // this part here uses promises. If the user promise resolves we first add the comment object to both the user and post. This is nessary when we are dealing with hasMany and belongsTo relationships  
-        user.then((userData) =>{
+        user.then((userData)=>{
           userData.get('comments').addObject(comment);
-          console.log('test');
-          return comment.save().then(()=> {
+          post.get('comments').addObject(comment);
+          return comment.save().then(()=>{
             console.log('comment saved succesfully');
             return post.save();
           })
           .catch((error)=>{
-            console.log(`comment: ${error}`);
+            console.log(`comment:  ${error}`);
             comment.rollbackAttributes();
           })
-          .then(()=> {
-            console.log('post saved succesfully');
+          .then(()=>{
+            console.log('post saved successfuly');
             return userData.save();
           })
           .catch((error)=>{
@@ -63,3 +59,7 @@ export default Ember.Route.extend({
 
 
         });
+
+      }
+    }
+  });

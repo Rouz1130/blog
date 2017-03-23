@@ -1,0 +1,30 @@
+{
+    "rules": {
+      ".read": true,
+      "posts":{
+        "$post": {
+          ".write": "auth !== null"
+
+        }
+
+      },
+      "comments":{
+        "$comment": {
+          "body":{".validate": "newData.val().length > 2"},
+          ".validate": "newData.hasChildren(['body','user'])"
+        },
+         ".write": "auth !== null"
+
+
+
+      },
+      "users":{
+        "$user":{
+               ".write": "auth !== null "
+
+        }
+
+      }
+
+    }
+}

@@ -1,6 +1,7 @@
 <div class = 'row main'>
   <div class='col-md-4'>
     <h1>Posts</h1>
+    <!--This template will display in the application template with the {{outlet}} the each helper iteraiets over each mposts.  -->
     {{#each model as |post|}}
     <br><h2 class='post-title'>{{#link-to 'posts' post.titleURL}}{{post.title}}{{/link-to}}</h2>
     <section class='post excerpt'>

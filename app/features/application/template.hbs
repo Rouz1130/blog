@@ -14,7 +14,7 @@
       {{else}}
       <li><a href="#" {{action 'logout' }}>Logout</a></li>
       <li>
-        <a href='http://twitter.com/{{session.currentUser.username}}' target='_blank'>
+        <a href='http://twitter.com/{{session.currentUser.displayName}}' target='_blank'>
           <img src='{{session.currentUser.photoURL}}' height='30px' width='30px'/>
         </a>
       </li>

@@ -26,7 +26,7 @@ export default Ember.Route.extend({
       });
       let uid = author.get('uid');
       user = getOrCreateUser(uid,
-        get(this,'session.currentUser.username'),
+        get(this,'session.currentUser.displayName'),
         get(this,'session.currentUser.photoURL'),
         this.store);
 

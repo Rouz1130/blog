@@ -1,1 +1,3 @@
-{{outlet}}
+<!--this template displays edit-post component so we need to pass session and model into here.  -->
+<!--also we declare name save , delete , createComment methods. from edit-post route.js names must match  -->
+{{edit-post model=model session=session save='save' delete='delete' createComment='createComment'  }}

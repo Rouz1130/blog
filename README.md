@@ -1,6 +1,6 @@
 # blog
 
-This is a blog project were a user can sign in via with their twitter account. Once logged in the user can now make a new Title to post a topic or reply to a current topic that is on the blog site. The project purpose was to practice the use of authentication in this case it uses twitter to do so. 
+This is a blog project were a user can sign in via with their twitter account. Once logged in the user can now make a new Title to post a topic or reply to a current topic that is on the blog site. The project purpose was to practice the use of authentication OAuth in this case it uses twitter. Typically once user writes a post their twitter image is displayed. Also a user who has logged in can link to a particular blog posts twitter account. Unfortonutly due to the documentation from firebase whihch has changed, the mage and link are currently not working. But the authentication is. 
 
 ## Prerequisites
 
@@ -13,7 +13,7 @@ You will need the following things properly installed on your computer.
 * [PhantomJS](http://phantomjs.org/)
 
 ## Installation
-
+* you can link to the project as it is depolyed. The link is at the top of my GitHub page.
 * `git clone <repository-url>` this repository
 * `cd blog`
 * `npm install`
@@ -38,7 +38,7 @@ Make use of the many generators for code, try `ember help generate` for more det
 * `ember build` (development)
 * `ember build --environment production` (production)
 
-### Deploying
+### Deploying Instrcutions.
 
 $ npm install -g firebase-tools
 $ ember build --prod
